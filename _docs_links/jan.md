@@ -5,7 +5,8 @@ age: 30
 
 ---
 
-```js
+```javascript
 
-const k= new Date()
+const k= new Date();
+
 ```
