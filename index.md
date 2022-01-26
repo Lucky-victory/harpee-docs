@@ -4,4 +4,10 @@
 ---
 title: Harpppppp
 ---
-<strong> strong word</strong>
+
+{% for docs_links in site.docs_links %}
+<strong>{{ docs_links.name }} - {{ docs_links.age }}</strong>
+
+{{docs_links.content}}
+
+{% endfor %}
