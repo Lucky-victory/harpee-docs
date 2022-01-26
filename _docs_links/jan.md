@@ -5,7 +5,7 @@ age: 30
 
 ---
 
-```javascript
+```python
 
 const k= new Date();
 
