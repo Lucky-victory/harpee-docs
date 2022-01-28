@@ -1,9 +1,4 @@
-   ---
-   title: Sqler | Harpee
-   description: write sql queries with ease.
-   ---
-   
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark-reasonable.min.css" /> 
+{ https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark-reasonable.min.css | absolute_url} 
 
    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.3.1/build/highlight.min.js">
   </script> 
@@ -103,6 +98,52 @@ select('age','name').from(usersSchema,users).whereNot('age').equalTo(30)
 </code>
 </pre>
 
+## orderBy(column)
+<pre>
+<code>
+
+select('age','name').from(usersSchema,users).orderBy('age')
+// result: SELECT age,name FROM usersSchema.users ORDER BY age;
+
+
+
+</code>
+</pre>
+## order('DESC' | 'ASC')
+<pre>
+<code>
+
+select('age','name').from(usersSchema,users).orderBy('age').order('DESC')
+// result: SELECT age,name FROM usersSchema.users ORDER BY age DESC;
+
+
+
+</code>
+</pre>
+
+## limit(limit)
+<pre>
+<code>
+
+select('age','name').from(usersSchema,users).limit(5)
+// result: SELECT age,name FROM usersSchema.users LIMIT 5;
+
+
+
+</code>
+</pre>
+
+## offset(offset)
+<pre>
+<code>
+
+select('age','name').from(usersSchema,users).limit(5).offset(10)
+// result: SELECT age,name FROM usersSchema.users LIMIT 5 OFFSET 10;
+
+
+
+</code>
+</pre>
 
    <script>
       hljs.highlightAll();
