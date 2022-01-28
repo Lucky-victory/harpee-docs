@@ -1,8 +1,8 @@
    ---
    title: Sqler | Harpee
    description: write sql queries with ease.
-   
    ---
+   
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark-reasonable.min.css" /> 
 
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.3.1/build/highlight.min.js">
@@ -66,3 +66,44 @@ selectCount('age')
 
 </code>
 </pre>
+
+## from(schema,table)
+<pre>
+<code>
+
+select('age','name').from(usersSchema,users)
+// result: SELECT age,name FROM usersSchema.users
+
+
+
+</code>
+</pre>
+
+## where(condition)
+<pre>
+<code>
+
+select('age','name').from(usersSchema,users).where('age').isNotNull()
+// result: SELECT age,name FROM usersSchema.users WHERE age IS NOT NULL;
+
+
+
+</code>
+</pre>
+
+## whereNot(condition)
+<pre>
+<code>
+
+select('age','name').from(usersSchema,users).whereNot('age').equalTo(30)
+// result: SELECT age,name FROM usersSchema.users WHERE NOT age=30;
+
+
+
+</code>
+</pre>
+
+
+   <script>
+      hljs.highlightAll();
+   </script>
