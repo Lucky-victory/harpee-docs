@@ -1,9 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>sqler</title>
+
+
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark-reasonable.min.css"/>
 
    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.3.1/build/highlight.min.js">
   </script> 
 
+</head>
 
+<body>
 
 
 # Sqler 
@@ -155,7 +167,28 @@ select('age','name').from(usersSchema,users).where('age').isNotNull().or('name')
 
 </code>
 </pre>
+## in([values])
+<pre>
+<code>
 
+select('age','name').from(usersSchema,users).where('age').in([20,30,25])
+// result: SELECT age,name FROM usersSchema.users WHERE age IN(20,30,25);
+
+
+
+</code>
+</pre>
+## and(condition)
+<pre>
+<code>
+
+select('age','name').from(usersSchema,users).where('age').isNotNull().and('email').isNull()
+// result: SELECT age,name FROM usersSchema.users WHERE age IS NOT NULL AND email IS NULL;
+
+
+
+</code>
+</pre>
    <script>
    document.addEventListener("DOMContentLoaded",()=>{
       document.querySelectorAll("pre code").forEach((el)=>{
@@ -164,3 +197,7 @@ select('age','name').from(usersSchema,users).where('age').isNotNull().or('name')
       })
    })
    </script>
+   
+   </body>
+   
+   </html>
