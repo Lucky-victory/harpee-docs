@@ -1,4 +1,4 @@
-{ https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark-reasonable.min.css | absolute_url} 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark-reasonable.min.css"/>
 
    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.3.1/build/highlight.min.js">
   </script> 
@@ -144,7 +144,23 @@ select('age','name').from(usersSchema,users).limit(5).offset(10)
 
 </code>
 </pre>
+## or(condition)
+<pre>
+<code>
+
+select('age','name').from(usersSchema,users).where('age').isNotNull().or('name').isNotNull()
+// result: SELECT age,name FROM usersSchema.users WHERE age IS NOT NULL OR name IS NOT NULL;
+
+
+
+</code>
+</pre>
 
    <script>
-      hljs.highlightAll();
+   document.addEventListener("DOMContentLoaded",()=>{
+      document.querySelectorAll("pre code").forEach((el)=>{
+         
+      hljs.highlightElement(el);
+      })
+   })
    </script>
