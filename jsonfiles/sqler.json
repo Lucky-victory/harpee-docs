@@ -1,0 +1,87 @@
+[
+   {
+   "id":"select",
+   "title":"select([columns],distinct)",
+   "code":"select(['age', 'name', 'email']); // result: SELECT age,name,email;// or with distinct;select(['age', 'name', 'email'], true);// result : SELECT DISTINCT age,name,email"
+},
+   {
+   "id":"selectAvg",
+   "title":"selectAvg(column)",
+   "code":"selectAvg('age'); // result: SELECT AVG(age)"
+},
+   {
+   "id":"selectSum",
+   "title":"selectSum(column)",
+   "code":"selectSum('age'); // result: SELECT SUM(age)"
+},
+   {
+   "id":"selectCount",
+   "title":"selectCount(column)",
+   "code":"selectCount('age'); // result: SELECT COUNT(age)"
+},
+{
+   "id":"from",
+   "title":"from(schema,table)",
+   "code":"select(['age','name']).from(usersSchema,users);// result: SELECT age,name FROM usersSchema.users"
+},
+   {
+      "id":"where",
+      "title":"where(condition)",
+      "code":"select(['age','name']).from(usersSchema,users).where('age').isNotNull();// result: SELECT age,name FROM usersSchema.users WHERE age IS NOT NULL"
+   },{
+      "id":"whereNot",
+      "title":"whereNot(condition)",
+      "code":"select(['age', 'name']).from(usersSchema, users).whereNot('age').equalTo(30);// result: SELECT age,name FROM usersSchema.users WHERE NOT age=30"
+   },
+   {
+      "id":"orderBy",
+      "title":"orderBy(column)",
+      "code":"select(['age','name']).from(usersSchema,users).orderBy('age');// result: SELECT age,name FROM usersSchema.users ORDER BY age;"
+   },
+   {
+      "id":"order",
+      "title":"order('DESC' | 'ASC')",
+      "code":"select(['age','name']).from(usersSchema,users).orderBy('age').order('DESC');// result: SELECT age,name FROM usersSchema.users ORDER BY age DESC;"
+   },
+   {
+      "id":"limit",
+      "title":"limit(limit)",
+      "code":"select(['age','name']).from(usersSchema,users).limit(5);// result: SELECT age,name FROM usersSchema.users LIMIT 5;"
+   },
+   {
+      "id":"offset",
+      "title":"offset(offset)",
+      "code":"select(['age','name']).from(usersSchema,users).limit(5).offset(10);// result: SELECT age,name FROM usersSchema.users LIMIT 5 OFFSET 10;"
+   }
+   ,{
+      "id":"or",
+      "title":"or(condition)",
+      "code":"select(['age','name']).from(usersSchema,users).where('age').isNotNull().or('name').isNotNull();// result: SELECT age,name FROM usersSchema.users WHERE age IS NOT NULL OR name IS NOT NULL;"
+   },
+   {
+      "id":"in",
+      "title":"in([values])",
+      "code":"select(['age', 'name']).from(usersSchema, users).where('age').in([20, 30, 25]);// result: SELECT age,name FROM usersSchema.users WHERE age IN(20,30,25);"
+   },
+   {
+      "id":"and",
+      "title":"and(condition)",
+      "code":"select(['age','name']).from(usersSchema,users).where('age').isNotNull().and('email').isNull();// result: SELECT age,name FROM usersSchema.users WHERE age IS NOT NULL AND email IS NULL;"
+   },
+   {
+      "id":"between",
+      "title":"between(val)",
+      "code":"select('age').from(usersSchema,users).where('age').between(40).and(60);//result: SELECT age FROM usersSchema.users WHERE age BETWEEN 40 AND 60"
+   },
+   {
+      "id":"offsetRows",
+      "title":"offsetRows(offset)",
+      "code":"select('age','name').from(usersSchema,users).offsetRows(5).fetchNextRows(15);//result: SELECT age,name FROM userSchema.users OFFSET 5 ROWS FETCH NEXT 15 ROWS ONLY"
+   },
+   {
+      "id":"fetchNextRows",
+      "title":"fetchNextRows(rows)",
+      "code":"select('age','name').from(usersSchema,users).offsetRows(10).fetchNextRows(20);//result: SELECT age,name FROM userSchema.users OFFSET 10 ROWS FETCH NEXT 20 ROWS ONLY"
+   }
+   
+   ]
