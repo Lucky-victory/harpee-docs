@@ -4,93 +4,93 @@
   "id":"find",
   "title":"find([columns] | {options},callback)",
   "desc":"Returns all records from the table.",
-  "code":"//using an array with callback;Model.find(['age','name'],(err,result)=>{; if(err) console.log(err); console.log(result) ;});// with options, expecting a promise; Model.find({limit:5, offset:10,getAttributes:['age','name'], orderBy:'name',order:'DESC'})__.then((result)=>console.log(res)).catch(err);// in an async function;try{;// passing an empty array or object will return everything__// equivalent to ['*']; const result = await Model.find([]);}catch(err){;console.log(err);}"
+  "code":"//using an array with callback;myUsers.find(['age','name'],(err,result)=>{; if(err) console.log(err); console.log(result) ;});// with options, expecting a promise; myUsers.find({limit:5, offset:10,getAttributes:['age','name'], orderBy:'name',order:'DESC'})__.then((result)=>console.log(res)).catch(err);// in an async function;try{;// passing an empty array or object will return everything__// equivalent to ['*']; const result = await myUsers.find([]);}catch(err){;console.log(err);}"
 },{
    "id":"findOne",
    "title":"findOne({key:value}, callback)",
    "desc":"Returns a single record based on the specified key-value",
-   "code":"// this will return a single record where age is 20;Model.findOne({age:20},(err,result)=>{; console.log(result); })"
+   "code":"// this will return a single record where age is 20;myUsers.findOne({age:20},(err,result)=>{; console.log(result); })"
 },
 {
    "id":"findById",
    "title":"findById([ids] | {options},callback)",
    "desc":"Returns one or more records based on the specified array of ids, <br>Note:<i>the values must be the values of the primaryKey at your Schema config.</i>",
-   "code":"// using an array;Model.findById(['user1','user2'],(err,result)=>{;console.log(result);});// using an object;try{; await Model.findById({id:['user1','user2'],getAttributes:['age','name']});} catch{;}"
+   "code":"// using an array;myUsers.findById(['user1','user2'],(err,result)=>{;console.log(result);});// using an object;try{; await myUsers.findById({id:['user1','user2'],getAttributes:['age','name']});} catch{;}"
 },
 {
    "id":"findByIdAndRemove",
    "title":"findByIdAndRemove( [ids] ,callback)",
    "desc":"Deletes one or more Records based on the specified values, Note:<i> the values must be the values of your primaryKey.</i>",
-   "code":"// this will removes users with id user3 and user4;Model.findByIdAndRemove(['user3','user4'],(err,result)=>{;console.log(result);})"
+   "code":"// this will removes users with id user3 and user4;myUsers.findByIdAndRemove(['user3','user4'],(err,result)=>{;console.log(result);})"
 },
 {
    "id":"findAndRemove",
    "title":"findAndRemove({key:[values] },callback)",
    "desc":"Deletes one or more Records based on the specified key:values.",
-   "code":"// this will delete records with the following email addresses;Model.findAndRemove({email:['user3@mail.org','user4@mail.co']},(err,result)=>{;console.log(result);})"
+   "code":"// this will delete records with the following email addresses;myUsers.findAndRemove({email:['user3@mail.org','user4@mail.co']},(err,result)=>{;console.log(result);})"
 },{
    "id":"findByValue",
    "title":"findByValue({options}, callback)",
    "desc":"Returns one or more records based on the specified values, <i>wildcard is allowed</i>",
-   "code":"Model.findByValue({searchAttribute:'name',searchValue:'pa*',getAttributes:['age','email']},(err,result)=>{;console.log(result);})"
+   "code":"myUsers.findByValue({searchAttribute:'name',searchValue:'pa*',getAttributes:['age','email']},(err,result)=>{;console.log(result);})"
 },{
    "id":"findByConditions",
    "title":"findByConditions( {options}, callback)",
    "desc":"Returns one or more records matching the specified conditions. Refer to <a href='https://api.harperdb.io/#c820c353-e7f6-4280-aa82-83be77857653'>harperDB docs</a> for a list of available options.",
-   "code":"Model.findByConditions({limit:10,offset:20:operator:'and',__conditions:[{__search_attribute:'name',__search_type:'equals',__search_value:'jane';}];}, (err,result)=>{;console.log(result);})"
+   "code":"myUsers.findByConditions({limit:10,offset:20:operator:'and',__conditions:[{__search_attribute:'name',__search_type:'equals',__search_value:'jane';}];}, (err,result)=>{;console.log(result);})"
 },
 {
   "id":"create",
   "title":"create({record}, callback)",
   "desc":"Inserts a new record into the table.<br>Note:<b>the data-types specified here must match those specified at Schema <code>fields</code>,otherwise an error would be thrown, you can turn this of by setting <code>silent:true</code> at Schema.</b>",
-  "code":"Model.create({__name:'paul',age:34,user_id:'user4'},(err,result)=>{;console.log(result);})"
+  "code":"myUsers.create({__name:'paul',age:34,user_id:'user4'},(err,result)=>{;console.log(result);})"
 },
 {
   "id":"createMany",
   "title":"createMany( [records], callback)",
   "desc":"Inserts one or more records into the table.<br>Note:<b> The data-types of this method are not validated, unlike the <a href='#create'><code>create </code></a>method</b>.",
-  "code":"Model.createMany([{__name:'paul',age:34,user_id:'user4'},{__name:'jane',age:23,user_id:'user5'}],(err,result)=>{;console.log(result);})"
+  "code":"myUsers.createMany([{__name:'paul',age:34,user_id:'user4'},{__name:'jane',age:23,user_id:'user5'}],(err,result)=>{;console.log(result);})"
 },
 {
   "id":"update",
   "title":"update([records], callback)",
   "desc":"update one or more records.<br>Note: <b>the records to be updated must include their primary key (id).</b>",
-  "code":"Model.update([{name:'paul wilson',user_id:'user4',occupation:'banker'}],(err,result)=>{;console.log(result);})"
+  "code":"myUsers.update([{name:'paul wilson',user_id:'user4',occupation:'banker'}],(err,result)=>{;console.log(result);})"
 },
 {
    "id":"query",
    "title":"query( sqlQuery, callback)",
    "desc":"This methods let's you write custom sql queries.",
-   "code":"Model.query('SELECT * FROM schema.table',(err,result)=>{;console.log(result);})"
+   "code":"myUsers.query('SELECT * FROM schema.table',(err,result)=>{;console.log(result);})"
 },
 {
    "id":"describeModel",
    "title":"describeModel( callback)",
    "desc":"Returns information about the table.",
-   "code":"Model.describeModel((err,result)=>{;console.log(result);})"
+   "code":"myUsers.describeModel((err,result)=>{;console.log(result);})"
 },
 {
    "id":"importFromCsv",
    "title":"importFromCsv( {options}, callback)",
    "desc":"Load data into the table with a valid CSV",
-   "code":"Model.importFromCsv({csv:'a valid CSV string',(err,result)=>{;console.log(result);})"
+   "code":"myUsers.importFromCsv({csv:'a valid CSV string',(err,result)=>{;console.log(result);})"
 },
 {
    "id":"importFromCsvFile",
    "title":"importFromCsvFile( {options}, callback)",
    "desc":"Load data into the table from a local CSV file. <br>Note:<b>This does not work for harperdb cloud instance.</b>",
-   "code":"Model.importFromCsvFile({filePath:'/path/to/local/file',(err,result)=>{;console.log(result);})"
+   "code":"myUsers.importFromCsvFile({filePath:'/path/to/local/file',(err,result)=>{;console.log(result);})"
 },
 {
    "id":"importFromCsvUrl",
    "title":"importFromCsvUrl( {options}, callback)",
    "desc":"Load data into the table from an external CSV file.",
-   "code":"Model.importFromCsvUrl({fileUrl:'http://example.com/file.csv',(err,result)=>{;console.log(result);})"
+   "code":"myUsers.importFromCsvUrl({fileUrl:'http://example.com/file.csv',(err,result)=>{;console.log(result);})"
 },
 {
    "id":"importFromS3",
    "title":"importFromS3( {options}, callback)",
    "desc":"Load data into the table from amazon S3.",
-   "code":"Model.importFromS3({__awsAccessKeyId:'your aws access key id',__awsSecretAccessKey:'your aws secret access key',__bucket:'the name of your aws bucket where the file lives',__key:' a .csv or .json file'},(err,result)=>{;console.log(result);})"
+   "code":"myUsers.importFromS3({__awsAccessKeyId:'your aws access key id',__awsSecretAccessKey:'your aws secret access key',__bucket:'the name of your aws bucket where the file lives',__key:' a .csv or .json file'},(err,result)=>{;console.log(result);})"
 }
 ]

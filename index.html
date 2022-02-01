@@ -9,18 +9,20 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark-reasonable.min.css"> -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark-reasonable.min.css">
 
-   <!--  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.3.1/build/highlight.min.js">
-  </script> -->
+   <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.3.1/build/highlight.min.js">
+     </script>
 
    <title>Harpee Docs | Home</title>
 </head>
 
 <body>
    <div class="wrapper">
-
-      <nav class="navigation" id="nav_links_container">
+<div class="mini-banner">
+   <a href="https://github.com/lucky-victory/harpee"><span class="material-icons">github</span> github</a>
+</div>
+      <nav class="navigation minimize" id="nav_links_container">
          <div class="hamburger-wrapper">
 
             <button class="hamburger material-icons">menu</button>
@@ -31,7 +33,7 @@
                   
                   <span class="material-icons">navigate_next
                   </span>
-                  <a href="">
+                  <a href="/">
                      Introduction
                   </a>
 
@@ -41,7 +43,7 @@
             <li class="navigation-item">
 
                <span class="material-icons">navigate_next</span>
-               <a href="">
+               <a href="#setup">
                   Installation & setup
                </a>
             </li>
@@ -95,13 +97,74 @@
          </ul>
       </nav>
       <main class="container">
-         <pre class="code">
+         <h1>Introduction</h1>
+         <p><b>HarperDB</b> is a geo-distributed database with hybrid SQL & NoSQL functionality in one powerful tool, accessed via a REST API.<br>
+         
+         <b>Runs anywhere</b> presenting a single interface across all deployment architectures.</p>
+         <h2>Meet Harpee</h2>
+         <p> <b>Harpee</b> is a modeling tool for <a href="https://harperdb.io">HarperDB</a>, Harpee aims to simplify the use of HarperDB by letting you breakdown each table into a Model.</p>
+         
+         <h2 id="setup">Installation & Usage</h2>
+         <p>Harpee can be installed through npm or yarn.</p>
+         
+      <code>
+         npm i harpee
+      </code>
+       or
       <code>
          
-          const you= 'me';
-          let x=90;
+         yarn add harpee
       </code>
-   </pre>
+      <p>Harpee consists of the following function and classes.</p>
+      <ul>
+         <li>createConnection.</li>
+         <li>Schema.</li>
+         <li><a href="/model">Model.</a></li>
+         <li><a href="/logger">Logger.</a></li>
+         <li><a href="/utilities">Utilities.</a></li>
+         <li><a href="/sqler">Sqler.</a></li>
+      </ul>
+<h3>Usage</h3>
+<pre><code>
+   const harpee=require("harpee");
+   
+   const DB_CONFIG={host:'https://xxxxxxxxx.harperdbcloud.com' // or http:localhost:9925,
+   username:'user',
+   password:'pass',
+   token:'ecyGuiofje93j.....' // only use token in place of username & password
+   }
+   
+   // connects to your harperdb instance
+   
+   harpee.createConnection(DB_CONFIG);
+   
+   // create a schema
+   
+   const usersSchema= new harpee.Schema({name:'usersSchema',
+   primaryKey:'user_id',
+   silent:false,
+   fields:{
+   user_id:{type:String},
+   age:{type:Number},
+   joined:Date,
+   name:String
+   });
+   
+   // create a Model and pass the return value of Schema class
+   // as a second argument.
+   
+   const myUsers= new harpee.Model('users',usersSchema);
+ 
+ </code>
+ </pre>
+ <p>
+    
+   That's all, you can now perform several operations 
+    on the table with this Model.<br>
+    Visit the <a href="/model">Model's</a> page for available methods.
+
+ </p>
+
       </main>
    </div>
 
@@ -112,7 +175,11 @@
 
 <script src="./js/main.js"></script>
    <script>
-      // hljs.highlightAll();
+   document.querySelectorAll('code').forEach((el)=>{
+      hljs.highlightElement(el);
+      
+   });
+   hljs.highlightAll();
    </script>
 </body>
 
