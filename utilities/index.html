@@ -4,8 +4,9 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <title>Sqler</title>
+   <title>Utilities | Harpee Docs</title>
 
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark-reasonable.min.css" />
 
@@ -16,7 +17,84 @@
 
 
 <body>
-   <!-- <div class="wrapper"></div> -->
+     <div class="wrapper">
+
+      <nav class="navigation minimize" id="nav_links_container" >
+         <div class="hamburger-wrapper">
+
+            <button class="hamburger material-icons">menu</button>
+         </div>
+         <ul class="navigation-list">
+            <li class="navigation-item">
+               <div class="inner">
+                  
+                  <span class="material-icons">navigate_next  </span>
+                  <a href="">
+                     Introduction
+                  </a>
+
+                  <ul class="navigation-item-inner">
+ 
+                  </ul>
+               </div>
+            </li>
+            <li class="navigation-item">
+
+   
+                  <span class="material-icons">navigate_next  </span>
+               <a href="">
+                  Installation & setup
+               </a>
+            </li>
+            <h2 class="heading">API</h2>
+            <li class="navigation-item">
+               <div class="inner">
+
+                              <span class="material-icons">navigate_next  </span>
+
+                  <a href="/model">
+                     Model
+                  </a>
+               </div>
+
+            </li>
+
+            <li class="navigation-item">
+               <div class="inner">
+
+                  <span class="material-icons">navigate_next</span>
+                  <a href="/sqler">
+                     Sqler
+                  </a>
+               </div>
+            </li>
+            <li class="navigation-item">
+               <div class="inner">
+                  <span class="material-icons">navigate_next  </span>
+                  <a href="/logger">
+               Logger
+                  </a>
+                  
+               </div>
+            </li>
+            <li class="navigation-item">
+               <div class="inner">
+
+                        <input type="checkbox" id="l4" class="nav-checkbox" checked />
+                  
+                        <label for="l4" class="material-icons">navigate_next </label>
+                  <a href="/utilities">
+                     Utilities
+                  </a>
+                           <ul class="navigation-item-inner" id="utilities_links">
+                      </ul>
+
+
+               </div>
+            </li>
+         </ul>
+      </nav>
+
    <main class="container">
       <h1>Utilities</h1>
       <p>
@@ -34,6 +112,8 @@ const Utilities= new harpee.Utilities();
       <div id="utl_docs">Loading docs...</div>
 
    </main>
+   </div>
+   <script src="../js/main.js"></script>
    <script src="../js/utl.js"></script>
 
 </body>

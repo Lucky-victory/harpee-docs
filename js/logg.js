@@ -1,10 +1,12 @@
-const modelDocsContainer=document.getElementById('logger_docs');
+const loggerDocsContainer=document.getElementById('logger_docs');
+const loggerLinksContainer=document.getElementById('logger_links');
 
 const fetchDocs= async (url)=>{
    try{
     const response=  await fetch(url);
     const data = await response.json();
-    renderDocs(data)
+    renderDocs(data);
+    renderLinks(data);
     return data;
    }
    catch(err){
@@ -14,11 +16,11 @@ const fetchDocs= async (url)=>{
 fetchDocs('../jsonfiles/logger.json');
 function renderDocs(docs){
    if(!docs){
-      modelDocsContainer.innerText='Error fetching docs...';
+      loggerDocsContainer.innerText='Error fetching docs...';
       return
    }
    let html='';
-   modelDocsContainer.innerHTML='';
+   loggerDocsContainer.innerHTML='';
  docs.map((doc)=>{
     return (
        html+=`
@@ -34,11 +36,27 @@ function renderDocs(docs){
        `
        )
  });
- modelDocsContainer.insertAdjacentHTML('beforeend',html);
+ loggerDocsContainer.insertAdjacentHTML('beforeend',html);
 
     document.querySelectorAll("code").forEach((el) => {
  
        hljs.highlightElement(el);
     })
  
+}
+function renderLinks(docs) {
+   let html = '';
+   loggerLinksContainer.innerHTML = '';
+   docs.map((doc) => {
+      return (
+         html += `
+         <li>
+   <a href='#${doc.id}'>${doc.id}</a>
+         </li>
+         
+         `
+      )
+   });
+   loggerLinksContainer.insertAdjacentHTML('beforeend', html);
+
 }

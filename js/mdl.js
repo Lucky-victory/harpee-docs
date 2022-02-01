@@ -1,10 +1,12 @@
 const modelDocsContainer=document.getElementById('model_docs');
+const modelLinksContainer=document.getElementById('model_links');
 
 const fetchDocs= async (url)=>{
    try{
     const response=  await fetch(url);
     const data = await response.json();
-    renderDocs(data)
+    renderDocs(data);
+    renderLinks(data)
     return data;
    }
    catch(err){
@@ -41,4 +43,20 @@ function renderDocs(docs){
        hljs.highlightElement(el);
     })
  
+}
+function renderLinks(docs) {
+   let html = '';
+   modelLinksContainer.innerHTML='';
+   docs.map((doc) => {
+      return (
+         html += `
+         <li>
+   <a href='#${doc.id}'>${doc.id}</a>
+         </li>
+         
+         `
+      )
+   });
+   modelLinksContainer.insertAdjacentHTML('beforeend', html);
+
 }

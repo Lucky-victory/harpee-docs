@@ -2,7 +2,56 @@
 {
    "id":"readLog",
    "title":"readLog({options}, callback)",
-   "desc":"Refer to <a href=''>harperDB docs</a> for available options.",
-   "code":"Logger.readLog({},(err,result)=>{;console.log(result;)})"
+   "desc":"Refer to <a href='https://api.harperdb.io/#16654661-b9b0-45ef-8276-99c24145b8dd'>harperDB docs</a> to learn more.",
+   "code":"// The values specified are the default values;Logger.readLog({start:0,__limit:100,__from:'2020-01-01T00:00:00.000Z',__until:'current date',__level:'error',__order:'asc'},(err,result)=>{;console.log(result;)})"
 }
+,{
+   "id":"getJob",
+   "title":"getJob({options}, callback)",
+   "desc":"get details about a job.",
+   "code":"Logger.getJob({id:'d409-4b45-40d4-da330'},(err,result)=>{;console.log(result);})"
+},
+{
+   "id":"readTransactionLog",
+   "title":"readTransactionLog( {options}, callback)",
+      "code":"Logger.readTransactionLog({schema:'mySchema',table:'myTable'},(err,result)=>{;console.log(result);})"
+
+},
+{
+   "id":"readTransactionLogByTimestamp",
+   "title":"readTransactionLogByTimestamp( {options}, callback)",
+   "code":"Logger.readTransactionLogByTimestamp({schema:'mySchema',table:'myTable',__searchValues:[12330300490,124030303030]},(err,result)=>{;console.log(result);})"
+},
+{
+   "id":"readTransactionLogByUsername",
+   "title":"readTransactionLogByUsername( {options}, callback)",
+      "code":"Logger.readTransactionLogByUsername({schema:'mySchema',table:'myTable',__searchValues:['HDB_ADMIN']},(err,result)=>{;console.log(result);})"
+
+},
+{
+   "id":"readTransactionLogHashValue",
+   "title":"readTransactionLogHashValue( {options}, callback)",
+      "code":"Logger.readTransactionLogByHashValue({schema:'mySchema',table:'myTable',__searchValues:['d939-4890-dae4-9012']},(err,result)=>{;console.log(result);})"
+
+},
+{
+  "id":"deleteRecordsBefore",
+  "title":"deleteRecordsBefore({options}, callback)",
+     "desc":"Records before the specified date will be deleted.",
+
+     "code":"Logger.deleteRecordsBefore({schema:'mySchema',table:'myTable',__date:'2020-01-01T00:00:00.000Z'},(err,result)=>{;console.log(result);})"
+
+},{
+   "id":"deleteTransactionLogsBefore",
+   "title":"deleteTransactionLogsBefore( {options}, callback)",
+   "desc":"Transaction logs before the specified timestamp will be deleted.",
+      "code":"Logger.deleteTransactionLogsBefore({schema:'mySchema',table:'myTable',__timestamp:12930292030},(err,result)=>{;console.log(result);})"
+
+},
+{
+   "id":"searchJobsByStartDate",
+   "title":"searchJobsByStartDate( {options}, callback)",
+   "code":"Logger.searchJobsByStartDate({__fromDate:'2020-01-01T:00:00:00.000Z'__,toDate:'2022-01-01T:00:00:00.000Z'}, (err,result)=>{;console.log(result);})"
+}
+
 ]

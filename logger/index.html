@@ -4,6 +4,8 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark-reasonable.min.css" />
 
    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.3.1/build/highlight.min.js">
@@ -14,21 +16,102 @@
 </head>
 
 <body>
-   <main class="container">
+   <div class="wrapper">
 
-      <h1>Logger</h1>
-      <p>
-         The class is for handling transaction logs.
-      </p>
-      <pre>
-   <code>
-   const harpee=require("harpee");
-   const Logger= new harpee.Logger();
+      <nav class="navigation minimize" id="nav_links_container">
+         <div class="hamburger-wrapper">
+
+            <button class="hamburger material-icons">menu</button>
+         </div>
+         <ul class="navigation-list">
+            <li class="navigation-item">
+               <div class="inner">
+
+                  <span class="material-icons">navigate_next </span>
+                  <a href="">
+                     Introduction
+                  </a>
+
+                  <ul class="navigation-item-inner">
+
+                  </ul>
+               </div>
+            </li>
+            <li class="navigation-item">
+
+
+               <span class="material-icons">navigate_next </span>
+               <a href="">
+                  Installation & setup
+               </a>
+            </li>
+            <h2 class="heading">API</h2>
+            <li class="navigation-item">
+               <div class="inner">
+
+                  <span class="material-icons">navigate_next </span>
+
+                  <a href="/model">
+                     Model
+                  </a>
+               </div>
+
+            </li>
+
+            <li class="navigation-item">
+               <div class="inner">
+
+                  <span class="material-icons">navigate_next</span>
+                  <a href="/sqler">
+                     Sqler
+                  </a>
+               </div>
+            </li>
+            <li class="navigation-item">
+               <div class="inner">
+                       <input type="checkbox" id="l4" class="nav-checkbox" checked />
+                  
+                       <label for="l4" class="material-icons">navigate_next </label>
+                  <a href="/logger">
+                     Logger
+                  </a>
+                  <ul class="navigation-item-inner" id="logger_links">
+                  </ul>
+               </div>
+            </li>
+            <li class="navigation-item">
+               <div class="inner">
+
+                               <span class="material-icons">navigate_next </span>
+
+                  <a href="/utilities">
+                     Utilities
+                  </a>
+
+
+
+               </div>
+            </li>
+         </ul>
+      </nav>
+
+
+      <main class="container">
+
+         <h1>Logger</h1>
+         <p>
+            The class is for handling Jobs and transaction logs.
+         </p>
+         <pre> <code>
+const harpee=require("harpee");
+const Logger= new harpee.Logger();
    </code>
       </pre>
-      <div id="logger_docs">Loading docs...</div>
+         <div id="logger_docs">Loading docs...</div>
 
-   </main>
+      </main>
+   </div>
+   <script src="../js/main.js"></script>
    <script src="../js/logg.js"></script>
 </body>
 
