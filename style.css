@@ -50,7 +50,12 @@ main{
    overflow-y: auto;
    
 }
-
+.heading{
+   padding-bottom: 0.25rem;
+   border-bottom: 2px solid #555;
+   font-size: 2rem;
+   margin-left: 1rem;
+}
 .navigation{
    background: #111;
    height: 100%;
@@ -84,8 +89,8 @@ main{
    font-size: 1.3rem;
 }
 .navigation-item label{
-   transition: 0.4s
-  
+   transition: 0.4s;
+  cursor: pointer;
 }
 .navigation-item-icon {
    margin-right: 0.5rem;
@@ -140,6 +145,7 @@ ul ul{
 }
 ul ul li{
    margin-bottom: 0.5rem;
+   list-style: square;
 }
 
 @media all and (nax-width:400px) {

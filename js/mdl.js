@@ -11,7 +11,7 @@ const fetchDocs= async (url)=>{
       return err
    }
 }
-fetchDocs('./jsonfiles/model.json');
+fetchDocs('../jsonfiles/model.json');
 function renderDocs(docs){
    if(!docs){
       modelDocsContainer.innerText='Error fetching docs...';

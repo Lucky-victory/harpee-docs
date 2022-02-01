@@ -31,7 +31,7 @@ function renderNavLinks(obj){
       return (
          mhtml+=`
          <li>
-   <a href='/model.html#${mod.id}'>${mod.id}</a>
+   <a href='/model#${mod.id}'>${mod.id}</a>
          </li>
          
          `
