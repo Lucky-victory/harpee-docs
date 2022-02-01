@@ -1,0 +1,8 @@
+[
+{
+   "id":"readLog",
+   "title":"readLog({options}, callback)",
+   "desc":"Refer to <a href=''>harperDB docs</a> for available options.",
+   "code":"Logger.readLog({},(err,result)=>{;console.log(result;)})"
+}
+]

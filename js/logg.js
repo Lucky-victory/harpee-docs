@@ -1,4 +1,4 @@
-const modelDocsContainer=document.getElementById('sqler_docs');
+const modelDocsContainer=document.getElementById('logger_docs');
 
 const fetchDocs= async (url)=>{
    try{
@@ -11,7 +11,7 @@ const fetchDocs= async (url)=>{
       return err
    }
 }
-fetchDocs('./jsonfiles/sqler.json');
+fetchDocs('./jsonfiles/logger.json');
 function renderDocs(docs){
    if(!docs){
       modelDocsContainer.innerText='Error fetching docs...';
@@ -25,8 +25,10 @@ function renderDocs(docs){
        <h2 id='${doc.id}'>
        ${doc.title}
        </h2>
+              ${doc.desc ? '<p>'+doc.desc+'</p>':''}
+
     <pre>
-    <code>${doc.code ? doc.code.replace(/;/g,'\n\r') : ''}
+    <code>${doc.code ? doc.code.replace(/;/g,'\n\r').replace(/__/g,'\n') : ''}
     </code>
     </pre>
        `
@@ -34,7 +36,7 @@ function renderDocs(docs){
  });
  modelDocsContainer.insertAdjacentHTML('beforeend',html);
 
-    document.querySelectorAll("pre code").forEach((el) => {
+    document.querySelectorAll("code").forEach((el) => {
  
        hljs.highlightElement(el);
     })
