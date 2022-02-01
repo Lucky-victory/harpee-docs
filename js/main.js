@@ -1,7 +1,9 @@
 const modelLinksContainer=document.getElementById('model_links');
 const sqlerLinksContainer=document.getElementById('sqler_links');
 const loggerLinksContainer=document.getElementById('logger_links');
-
+const hamburger=document.querySelector('.hamburger');
+const navigationContainer=document.querySelector('.navigation');
+hamburger.addEventListener('click',toggleNavigation);
 
 async function fetchAll(urls=[]){
    try{
@@ -66,4 +68,9 @@ function renderNavLinks(obj){
          )
    });
    loggerLinksContainer.insertAdjacentHTML('beforeend',lhtml);
+}
+
+
+function toggleNavigation(){
+   navigationContainer.classList.toggle('minimize');
 }

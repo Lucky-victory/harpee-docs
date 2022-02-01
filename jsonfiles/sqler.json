@@ -1,7 +1,7 @@
 [
    {
       "id": "select",
-      "title": "select([columns],distinct)",
+      "title": "select([columns], distinct)",
       "code": "queryHandler.select(['age', 'name', 'email']); // result: SELECT age,name,email;// or with distinct;queryHandler.select(['age', 'name', 'email'], true);// result : SELECT DISTINCT age,name,email"
 },
    {
@@ -21,7 +21,7 @@
 },
    {
       "id": "from",
-      "title": "from(schema,table)",
+      "title": "from(schema, table)",
       "code": "queryHandler.select(['age','name']).from(usersSchema,users);// result: SELECT age,name FROM usersSchema.users"
 },
    {
@@ -98,42 +98,42 @@
    },
    {
       "id": "isEqual",
-      "title": "isEqual(table,column)",
+      "title": "isEqual(table, column)",
       "code":"queryHandler.select('age','name').from(usersSchema,users).innerJoin(usersSchema,posts).on(users,id).isEqual(posts,id);//result : SELECT age,name FROM usersSchema.users INNER JOIN usersSchema.posts ON users.id=posts.id"
    },
    {
       "id": "on",
-      "title": "on(table,column)",
+      "title": "on(table, column)",
          "code":"queryHandler.select('age','name').from(usersSchema,users).innerJoin(usersSchema,posts).on(users,id).isEqual(posts,id);//result : SELECT age,name FROM usersSchema.users INNER JOIN usersSchema.posts ON users.id=posts.id"
 
    },
 
    {
       "id": "crossJoin",
-      "title": "crossJoin(schema,table)",
+      "title": "crossJoin(schema, table)",
          "code":"queryHandler.select('age','name').from(usersSchema,users).crossJoin(usersSchema,posts).on(users,id).isEqual(posts,id);//result : SELECT age,name FROM usersSchema.users CROSS JOIN usersSchema.posts"
 
    },
    {
       "id": "innerJoin",
-      "title": "innerJoin(schema,table)",
+      "title": "innerJoin(schema, table)",
          "code":"queryHandler.select('age','name').from(usersSchema,users).innerJoin(usersSchema,posts).on(users,id).isEqual(posts,id);//result : SELECT age,name FROM usersSchema.users INNER JOIN usersSchema.posts ON users.id=posts.id"
 
    },
    {
       "id": "fullOuterJoin",
-      "title": "fullOuterJoin(schema,table)",
+      "title": "fullOuterJoin(schema, table)",
          "code":"queryHandler.select('age','name').from(usersSchema,users).fullOuterJoin(usersSchema,posts).on(users,id).isEqual(posts,id);//result : SELECT age,name FROM usersSchema.users FULL OUTER JOIN usersSchema.posts ON users.id=posts.id"
 
    },
    {
       "id": "leftOuterJoin",
-      "title": "leftOuterJoin(schema,table)",
+      "title": "leftOuterJoin(schema, table)",
          "code":"queryHandler.select('age','name').from(usersSchema,users).leftOuterJoin(usersSchema,posts).on(users,id).isEqual(posts,id);//result : SELECT age,name FROM usersSchema.users LEFT OUTER JOIN usersSchema.posts ON users.id=posts.id"
 
    }, {
       "id": "rightOuterJoin",
-      "title": "rightOuterJoin(schema,table)",
+      "title": "rightOuterJoin(schema, table)",
          "code":"queryHandler.select('age','name').from(usersSchema,users).rightOuterJoin(usersSchema,posts).on(users,id).isEqual(posts,id);//result : SELECT age,name FROM usersSchema.users RIGHT OUTER JOIN usersSchema.posts ON users.id=posts.id"
 
    }
