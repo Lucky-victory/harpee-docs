@@ -4,7 +4,8 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <title>Sqler</title>
+   <title>Sqler | Harpee Docs</title>
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark-reasonable.min.css"/>
@@ -17,7 +18,100 @@
 
 <body>
 <!-- <div class="wrapper"></div> -->
-<main class="container">
+  <div class="wrapper">
+
+      <nav class="navigation" id="nav_links_container">
+         <div class="hamburger-wrapper">
+
+            <button class="hamburger material-icons">menu</button>
+         </div>
+         <ul class="navigation-list">
+            <li class="navigation-item">
+               <div class="inner">
+                  <input type="checkbox" id="l1" class="nav-checkbox" />
+
+                  <label for="l1" class="material-icons navigation-item-icon">navigate_next
+
+                  </label>
+                  <a href="">
+                     Introduction
+                  </a>
+
+                  <ul class="navigation-item-inner">
+ 
+                  </ul>
+               </div>
+            </li>
+            <li class="navigation-item">
+
+               <input type="checkbox" id="l2" class="nav-checkbox" />
+               <label for="l2" class="material-icons navigation-item-icon">navigate_next</label>
+               <a href="">
+                  Installation & setup
+               </a>
+            </li>
+            <h2 class="heading">API</h2>
+            <li class="navigation-item">
+               <div class="inner">
+
+                  <input type="checkbox" id="l3" class="nav-checkbox" />
+                  <label for="l3" class="material-icons navigation-item-icon">navigate_next</label>
+                  <a href="/model">
+                     Model
+                  </a>
+
+                  <ul class="navigation-item-inner" id="model_links">
+                     
+                  </ul>
+               </div>
+
+            </li>
+
+            <li class="navigation-item">
+               <div class="inner">
+
+                  <input type="checkbox" id="l4" class="nav-checkbox" />
+                  <label for="l4" class="material-icons navigation-item-icon">navigate_next</label>
+                  <a href="/sqler">
+                     Sqler
+                  </a>
+                  <ul class="navigation-item-inner" id="sqler_links">
+                     
+                  </ul>
+               </div>
+            </li>
+            <li class="navigation-item">
+               <div class="inner">
+
+                  <input type="checkbox" id="l5" class="nav-checkbox" />
+                  <label for="l5" class="material-icons navigation-item-icon">navigate_next</label>
+                  <a href="/logger">
+               Logger
+                  </a>
+                  <ul class="navigation-item-inner" id="logger_links">
+                     
+                  </ul>
+               </div>
+            </li>
+            <li class="navigation-item">
+               <div class="inner">
+
+                  <input type="checkbox" id="l6" class="nav-checkbox" />
+                  <label for="l6" class="material-icons navigation-item-icon">navigate_next</label>
+                  <a href="/utilities">
+                     Utilities
+                  </a>
+                  <ul class="navigation-item-inner" id="utilities_links">
+                     
+                  </ul>
+               </div>
+            </li>
+         </ul>
+      </nav>
+      <main class="container">
+   
+
+
 <h1>Sqler</h1> 
 <p>
 This class aims to simplify writing sql queries
@@ -34,7 +128,9 @@ const queryHandler= new harpee.Sqler();
 
    <div id="sqler_docs">Loading docs...</div>
 
-</main>
+      </main>
+      </div>
+<script src="../js/main.js" ></script>
 <script src="../js/sqler.js" ></script>
 
    </body>

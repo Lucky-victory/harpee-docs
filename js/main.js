@@ -1,4 +1,6 @@
 const modelLinksContainer=document.getElementById('model_links');
+const sqlerLinksContainer=document.getElementById('sqler_links');
+const loggerLinksContainer=document.getElementById('logger_links');
 
 
 async function fetchAll(urls=[]){
@@ -22,11 +24,15 @@ async function fetchAll(urls=[]){
       console.log(err)
    }
 }
-fetchAll(['./jsonfiles/model.json','./jsonfiles/logger.json','./jsonfiles/sqler.json']);
+fetchAll(['/jsonfiles/model.json','/jsonfiles/logger.json','/jsonfiles/sqler.json']);
 
 function renderNavLinks(obj){
    modelLinksContainer.innerHTML='';
+   sqlerLinksContainer.innerHTML='';
+   loggerLinksContainer.innerHTML='';
    let mhtml='';
+   let shtml='';
+   let lhtml='';
    obj.model.map((mod)=>{
       return (
          mhtml+=`
@@ -38,4 +44,26 @@ function renderNavLinks(obj){
          )
    });
    modelLinksContainer.insertAdjacentHTML('beforeend',mhtml);
+   obj.sqler.map((mod)=>{
+      return (
+         shtml+=`
+         <li>
+   <a href='/sqler#${mod.id}'>${mod.id}</a>
+         </li>
+         
+         `
+         )
+   });
+   sqlerLinksContainer.insertAdjacentHTML('beforeend',shtml);
+   obj.logger.map((mod)=>{
+      return (
+         lhtml+=`
+         <li>
+   <a href='/logger#${mod.id}'>${mod.id}</a>
+         </li>
+         
+         `
+         )
+   });
+   loggerLinksContainer.insertAdjacentHTML('beforeend',lhtml);
 }
