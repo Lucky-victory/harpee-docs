@@ -2,139 +2,155 @@
    {
       "id": "select",
       "title": "select([columns], distinct)",
-      "code": "queryHandler.select(['age', 'name', 'email']); // result: SELECT age,name,email;// or with distinct;queryHandler.select(['age', 'name', 'email'], true);// result : SELECT DISTINCT age,name,email"
+      "code": "queryHandler.select(['age', 'name', 'email']); // result: {query:\" SELECT age,name,email;// or with distinct;queryHandler.select(['age', 'name', 'email'], true);// result: {query:\" SELECT DISTINCT age,name,email \"}"
 },
    {
       "id": "selectAvg",
       "title": "selectAvg(column)",
-      "code": "queryHandler.selectAvg('age'); // result: SELECT AVG(age)"
+      "code": "queryHandler.selectAvg('age'); // result: {query:\" SELECT AVG(age) \"}"
 },
    {
       "id": "selectSum",
       "title": "selectSum(column)",
-      "code": "queryHandler.selectSum('age'); // result: SELECT SUM(age)"
+      "code": "queryHandler.selectSum('age'); // result: {query:\" SELECT SUM(age) \"}"
 },
    {
       "id": "selectCount",
       "title": "selectCount(column)",
-      "code": "queryHandler.selectCount('age'); // result: SELECT COUNT(age)"
+      "code": "queryHandler.selectCount('age'); // result: {query:\" SELECT COUNT(age) \"}"
+},
+{
+  "id":"insertInto",
+  "title":"insertInto({options})",
+  "code":"queryHandler.insertInto({schema:'usersSchema',table:'users',records:[{name:'lucky',age:25,job:'web developer'}]}); // result: { query: \" INSERT INTO usersSchema.[users] (name,age,job) VALUES('lucky','25','web developer') \" }"
+},
+
+{
+  "id":"update",
+  "title":"update(schema,table)",
+  "code":"queryHandler.update(usersSchema,users); // result: {query:\" UPDATE usersSchema.[users] \"}"
+},
+{
+  "id":"set",
+  "title":"set([records])",
+  "code":"queryHandler.update(usersSchema,users).set({name:'lucky',age:25,job:'web developer'}); // result: { query: \" UPDATE usersSchema.[users] SET `name`='lucky',`age`='25',`job`='web developer'\" }"
 },
    {
       "id": "from",
       "title": "from(schema, table)",
-      "code": "queryHandler.select(['age','name']).from(usersSchema,users);// result: SELECT age,name FROM usersSchema.users"
+      "code": "queryHandler.select(['age','name']).from(usersSchema,users);// result: {query:\" SELECT age,name FROM usersSchema.users \"}"
 },
    {
       "id": "where",
       "title": "where(condition)",
-      "code": "queryHandler.select(['age','name']).from(usersSchema,users).where('age').isNotNull();// result: SELECT age,name FROM usersSchema.users WHERE age IS NOT NULL"
+      "code": "queryHandler.select(['age','name']).from(usersSchema,users).where('age').isNotNull();// result: {query:\" SELECT age,name FROM usersSchema.users WHERE age IS NOT NULL \"}"
    }, {
       "id": "whereNot",
       "title": "whereNot(condition)",
-      "code": "queryHandler.select(['age', 'name']).from(usersSchema, users).whereNot('age').equalTo(30);// result: SELECT age,name FROM usersSchema.users WHERE NOT age=30"
+      "code": "queryHandler.select(['age', 'name']).from(usersSchema, users).whereNot('age').equalTo(30);// result: {query:\" SELECT age,name FROM usersSchema.users WHERE NOT age=30 \"}"
    },
    {
       "id": "orderBy",
       "title": "orderBy(column)",
-      "code": "queryHandler.select(['age','name']).from(usersSchema,users).orderBy('age');// result: SELECT age,name FROM usersSchema.users ORDER BY age;"
+      "code": "queryHandler.select(['age','name']).from(usersSchema,users).orderBy('age');// result: {query:\" SELECT age,name FROM usersSchema.users ORDER BY age\"};"
    },
    {
       "id": "order",
       "title": "order('DESC' | 'ASC')",
-      "code": "queryHandler.select(['age','name']).from(usersSchema,users).orderBy('age').order('DESC');// result: SELECT age,name FROM usersSchema.users ORDER BY age DESC;"
+      "code": "queryHandler.select(['age','name']).from(usersSchema,users).orderBy('age').order('DESC');// result: {query:\" SELECT age,name FROM usersSchema.users ORDER BY age DESC \"};"
    },
    {
       "id": "limit",
       "title": "limit(limit)",
-      "code": "queryHandler.select(['age','name']).from(usersSchema,users).limit(5);// result: SELECT age,name FROM usersSchema.users LIMIT 5;"
+      "code": "queryHandler.select(['age','name']).from(usersSchema,users).limit(5);// result: {query:\" SELECT age,name FROM usersSchema.users LIMIT 5 \"};"
    },
    {
       "id": "offset",
       "title": "offset(offset)",
-      "code": "queryHandler.select(['age','name']).from(usersSchema,users).limit(5).offset(10);// result: SELECT age,name FROM usersSchema.users LIMIT 5 OFFSET 10;"
+      "code": "queryHandler.select(['age','name']).from(usersSchema,users).limit(5).offset(10);// result: {query:\" SELECT age,name FROM usersSchema.users LIMIT 5 OFFSET 10\"};"
    }
    , {
       "id": "or",
       "title": "or(condition)",
-      "code": "queryHandler.select(['age','name']).from(usersSchema,users).where('age').isNotNull().or('name').isNotNull();// result: SELECT age,name FROM usersSchema.users WHERE age IS NOT NULL OR name IS NOT NULL;"
+      "code": "queryHandler.select(['age','name']).from(usersSchema,users).where('age').isNotNull().or('name').isNotNull();// result: {query:\" SELECT age,name FROM usersSchema.users WHERE age IS NOT NULL OR name IS NOT NULL \"};"
    },
    {
       "id": "in",
       "title": "in([values])",
-      "code": "queryHandler.select(['age', 'name']).from(usersSchema, users).where('age').in([20, 30, 25]);// result: SELECT age,name FROM usersSchema.users WHERE age IN(20,30,25);"
+      "code": "queryHandler.select(['age', 'name']).from(usersSchema, users).where('age').in([20, 30, 25]);// result: {query:\" SELECT age,name FROM usersSchema.users WHERE age IN(20,30,25) \"};"
    },{
       "id": "like",
       "title": "like(pattern)",
-      "code": "queryHandler.select(['age', 'name']).from(usersSchema, users).where('name').like('%paul%');// result: SELECT age,name FROM usersSchema.users WHERE name LIKE '%paul%';"
+      "code": "queryHandler.select(['age', 'name']).from(usersSchema, users).where('name').like('%paul%');// result: {query:\" SELECT age,name FROM usersSchema.users WHERE name LIKE '%paul%' \"};"
    },
    {
       "id": "isNull",
       "title": "isNull()",
-       "code": "queryHandler.select(['age','name']).from(usersSchema,users).where('email').isNull();// result: SELECT age,name FROM usersSchema.users WHERE email IS NULL;"
+       "code": "queryHandler.select(['age','name']).from(usersSchema,users).where('email').isNull();// result: {query:\" SELECT age,name FROM usersSchema.users WHERE email IS NULL \"};"
       }, {
       "id": "isNotNull",
       "title": "isNotNull()",
-      "code": "queryHandler.select(['age','name']).from(usersSchema,users).where('age').isNotNull();// result: SELECT age,name FROM usersSchema.users WHERE age IS NOT NULL"
+      "code": "queryHandler.select(['age','name']).from(usersSchema,users).where('age').isNotNull();// result: {query:\" SELECT age,name FROM usersSchema.users WHERE age IS NOT NULL \"}"
       },
    {
       "id": "and",
       "title": "and(condition)",
-      "code": "queryHandler.select(['age','name']).from(usersSchema,users).where('age').isNotNull().and('email').isNull();// result: SELECT age,name FROM usersSchema.users WHERE age IS NOT NULL AND email IS NULL;"
+      "code": "queryHandler.select(['age','name']).from(usersSchema,users).where('age').isNotNull().and('email').isNull();// result: {query:\" SELECT age,name FROM usersSchema.users WHERE age IS NOT NULL AND email IS NULL \"};"
    },
    {
       "id": "between",
       "title": "between(val)",
-      "code": "queryHandler.select('age').from(usersSchema,users).where('age').between(40).and(60);//result: SELECT age FROM usersSchema.users WHERE age BETWEEN 40 AND 60"
+      "code": "queryHandler.select('age').from(usersSchema,users).where('age').between(40).and(60);//result: {query:\" SELECT age FROM usersSchema.users WHERE age BETWEEN 40 AND 60 \"}"
 },
    {
       "id": "offsetRows",
       "title": "offsetRows(offset)",
-      "code": "queryHandler.select('age','name').from(usersSchema,users).offsetRows(5).fetchNextRows(15);//result: SELECT age,name FROM usersSchema.users OFFSET 5 ROWS FETCH NEXT 15 ROWS ONLY"
+      "code": "queryHandler.select('age','name').from(usersSchema,users).offsetRows(5).fetchNextRows(15);//result: {query:\" SELECT age,name FROM usersSchema.users OFFSET 5 ROWS FETCH NEXT 15 ROWS ONLY \"}"
    },
    {
       "id": "fetchNextRows",
       "title": "fetchNextRows(rows)",
-      "code": "queryHandler.select('age','name').from(usersSchema,users).offsetRows(10).fetchNextRows(20);//result: SELECT age,name FROM usersSchema.users OFFSET 10 ROWS FETCH NEXT 20 ROWS ONLY"
+      "code": "queryHandler.select('age','name').from(usersSchema,users).offsetRows(10).fetchNextRows(20);//result: {query:\" SELECT age,name FROM usersSchema.users OFFSET 10 ROWS FETCH NEXT 20 ROWS ONLY \"}"
    },
    {
       "id": "isEqual",
       "title": "isEqual(table, column)",
-      "code":"queryHandler.select('age','name').from(usersSchema,users).innerJoin(usersSchema,posts).on(users,id).isEqual(posts,id);//result : SELECT age,name FROM usersSchema.users INNER JOIN usersSchema.posts ON users.id=posts.id"
+      "code":"queryHandler.select('age','name').from(usersSchema,users).innerJoin(usersSchema,posts).on(users,id).isEqual(posts,id); //result: {query:\" SELECT age,name FROM usersSchema.users INNER JOIN usersSchema.posts ON users.id=posts.id \"}"
    },
    {
       "id": "on",
       "title": "on(table, column)",
-         "code":"queryHandler.select('age','name').from(usersSchema,users).innerJoin(usersSchema,posts).on(users,id).isEqual(posts,id);//result : SELECT age,name FROM usersSchema.users INNER JOIN usersSchema.posts ON users.id=posts.id"
+         "code":"queryHandler.select('age','name').from(usersSchema,users).innerJoin(usersSchema,posts).on(users,id).isEqual(posts,id); //result: {query:\" SELECT age,name FROM usersSchema.users INNER JOIN usersSchema.posts ON users.id=posts.id \"}"
 
    },
 
    {
       "id": "crossJoin",
       "title": "crossJoin(schema, table)",
-         "code":"queryHandler.select('age','name').from(usersSchema,users).crossJoin(usersSchema,posts).on(users,id).isEqual(posts,id);//result : SELECT age,name FROM usersSchema.users CROSS JOIN usersSchema.posts"
+         "code":"queryHandler.select('age','name').from(usersSchema,users).crossJoin(usersSchema,posts).on(users,id).isEqual(posts,id); //result: {query:\" SELECT age,name FROM usersSchema.users CROSS JOIN usersSchema.posts \"}"
 
    },
    {
       "id": "innerJoin",
       "title": "innerJoin(schema, table)",
-         "code":"queryHandler.select('age','name').from(usersSchema,users).innerJoin(usersSchema,posts).on(users,id).isEqual(posts,id);//result : SELECT age,name FROM usersSchema.users INNER JOIN usersSchema.posts ON users.id=posts.id"
+         "code":"queryHandler.select('age','name').from(usersSchema,users).innerJoin(usersSchema,posts).on(users,id).isEqual(posts,id); //result:{query:\" SELECT age,name FROM usersSchema.users INNER JOIN usersSchema.posts ON users.id=posts.id \"}"
 
    },
    {
       "id": "fullOuterJoin",
       "title": "fullOuterJoin(schema, table)",
-         "code":"queryHandler.select('age','name').from(usersSchema,users).fullOuterJoin(usersSchema,posts).on(users,id).isEqual(posts,id);//result : SELECT age,name FROM usersSchema.users FULL OUTER JOIN usersSchema.posts ON users.id=posts.id"
+         "code":"queryHandler.select('age','name').from(usersSchema,users).fullOuterJoin(usersSchema,posts).on(users,id).isEqual(posts,id); //result:{query:\" SELECT age,name FROM usersSchema.users FULL OUTER JOIN usersSchema.posts ON users.id=posts.id \"}"
 
    },
    {
       "id": "leftOuterJoin",
       "title": "leftOuterJoin(schema, table)",
-         "code":"queryHandler.select('age','name').from(usersSchema,users).leftOuterJoin(usersSchema,posts).on(users,id).isEqual(posts,id);//result : SELECT age,name FROM usersSchema.users LEFT OUTER JOIN usersSchema.posts ON users.id=posts.id"
+         "code":"queryHandler.select('age','name').from(usersSchema,users).leftOuterJoin(usersSchema,posts).on(users,id).isEqual(posts,id); //result: {query:\" SELECT age,name FROM usersSchema.users LEFT OUTER JOIN usersSchema.posts ON users.id=posts.id \"}"
 
    }, {
       "id": "rightOuterJoin",
       "title": "rightOuterJoin(schema, table)",
-         "code":"queryHandler.select('age','name').from(usersSchema,users).rightOuterJoin(usersSchema,posts).on(users,id).isEqual(posts,id);//result : SELECT age,name FROM usersSchema.users RIGHT OUTER JOIN usersSchema.posts ON users.id=posts.id"
+         "code":"queryHandler.select('age','name').from(usersSchema,users).rightOuterJoin(usersSchema,posts).on(users,id).isEqual(posts,id); //result:{query:\" SELECT age,name FROM usersSchema.users RIGHT OUTER JOIN usersSchema.posts ON users.id=posts.id \"}"
 
    }
 
